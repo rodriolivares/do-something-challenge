@@ -10,19 +10,19 @@ const Activity = ({ activity, added }) => {
       <div className="my-10 border-solid border-b-2 border-orange-500 pb-5">
          <p className="font-bold text-xl">{name}</p>
          <div className="my-5">
-            {accesibility && <p
-               className="text-lg mx-2"
-            >Accesibility: {accesibility}</p>}
             {type && <div className="flex justify-start items-center">
                <p
                   className="text-lg mx-2 mr-7"
                >Type: {type} </p>
                <img 
-                  src={`assets/${type}.svg`} 
+                  src={`images/${type}.svg`} 
                   alt={`Type: ${type}`} 
                   className="w-10"
                />
             </div>}
+            {accesibility && <p
+               className="text-lg mx-2"
+            >Accesibility: {accesibility}</p>}
             {participants && <p
                className="text-lg mx-2"
             >Participants: {participants}</p>}
