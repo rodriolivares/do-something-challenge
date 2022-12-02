@@ -1,23 +1,24 @@
-import logo from './logo.svg';
-import './App.css';
+import useAuth from "./hooks/useAuth";
+import useActivity from "./hooks/useActivity";
+import Layout from "./components/Layout";
+import SignUp from "./views/SignUp";
+import Login from "./views/Login";
+import Home from "./views/Home";
+import ActivitiesList from "./views/ActivitiesList";
 
 function App() {
+  const { isAuthenticated, userData } = useAuth()
+  const { viewHome } = useActivity()
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div className="container mx-auto mt-5 md:mt-20 p-5 md:flex md:justify-center">
+      <Layout>
+        { !isAuthenticated ? 
+          userData.name ? <Login /> : <SignUp />
+        : 
+          viewHome ? <Home /> : <ActivitiesList /> 
+        }
+      </Layout>
     </div>
   );
 }
